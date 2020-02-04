@@ -48,6 +48,11 @@ ___
 <br>
 
 ___
+#### 입력 방식
+
+> <b> 소스 </b>
+> > ![입력 소스.jpg](E:\LOCS\Project\Zero Project with jeha\img)
+___
 #### 알고리즘
 
 > <b> 설명 </b>
