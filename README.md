@@ -83,7 +83,42 @@ char *InPutFunction()
 > > 또는, 입력받은 문자가 '\b' (백 스페이스)일 경우, <br/>
 > > '\b' 가 저장되어 있는 배열 인덱스보다 한 칸 더 앞으로 이동하여 재입력을 받는다.
 
-<br>
+<br/>
+
+___
+#### 피연산자 추출
+
+> <b> 소스 </b>
+```{.c}
+double *NUMBERPOP(char *s)
+{
+	double *arr = malloc(MAXSIZE);
+
+	char *delimiter = "+-*/%^";
+	char *ptoken;
+	char *next_token;
+
+	int cnt = 0;
+
+	ptoken = strtok_s(s, delimiter, &next_token);
+	while (ptoken != NULL)
+	{
+		NumCnt++;
+		arr[cnt++] = (double)atoi(ptoken);
+
+		ptoken = strtok_s(NULL, delimiter, &next_token);
+	}
+
+	return arr;
+}
+```
+
+> <b> 소스 설명 </b>
+> > 프로그래머가 문자를 구별해낼 구별자(delimeter)를 설정하고 <br/>
+> > 입력 받은 문자열을 구별해서 토큰으로 분리한다. <br/> <br/>
+> > 토큰들은 분리와 동시에 배열에 저장하여 "피연산자 배열"을 생성한다.
+
+<br/>
 
 ___
 #### 알고리즘
