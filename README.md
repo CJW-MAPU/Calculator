@@ -179,3 +179,113 @@ char *OPERATORPOP(char *s)
 > > 연산자 추출은 해당 배열에 존재하는 값이 어떤 연산자인지 구별한다.
 
 <br/>
+
+___
+#### 연산
+
+> <b> 소스 </b>
+```{.c}
+double RESULT(double *number, char *operator)
+{
+	int index = 0; // 첨자
+	int cnt = 0;
+	int backup = 0;
+
+	int reduction = 0; // 감소용
+
+	for (int i = 0; i < RANK; i++)
+	{
+		cnt = index;
+		if (i == 0)
+		{
+			while (cnt < OprCnt)
+			{
+				if (operator[cnt] == '^')
+				{
+					backup++;
+					number[cnt + 1] = pow(number[cnt], number[cnt + 1]);
+					reduction = cnt;
+					while (reduction > index)
+					{
+						number[reduction] = number[reduction - 1];
+						operator[reduction] = operator[reduction - 1];
+						reduction--;
+					}
+				}
+				//test
+				cnt++;
+			}
+			index = backup;
+			reduction = 0;
+		}
+		if (i == 1)
+		{
+			while (cnt < OprCnt)
+			{
+				if (operator[cnt] == '*')
+				{
+					backup++;
+					number[cnt + 1] = number[cnt] * number[cnt + 1];
+					reduction = cnt;
+					while (reduction > index)
+					{
+						number[reduction] = number[reduction - 1];
+						operator[reduction] = operator[reduction - 1];
+						reduction--;
+					}
+				}
+				if (operator[cnt] == '/')
+				{
+					backup++;
+					number[cnt + 1] = number[cnt] / number[cnt + 1];
+					reduction = cnt;
+					while (reduction > index)
+					{
+						number[reduction] = number[reduction - 1];
+						operator[reduction] = operator[reduction - 1];
+						reduction--;
+					}
+				}
+				if (operator[cnt] == '%')
+				{
+					backup++;
+					number[cnt + 1] = (int)number[cnt] % (int)number[cnt + 1];
+					reduction = cnt;
+					while (reduction > index)
+					{
+						number[reduction] = number[reduction - 1];
+						operator[reduction] = operator[reduction - 1];
+						reduction--;
+					}
+				}
+				cnt++;
+			}
+			index = backup;
+			reduction = 0;
+		}
+		if (i == 2)
+		{
+			while (cnt < OprCnt)
+			{
+				if (operator[cnt] == '+')
+				{
+					number[cnt + 1] = number[cnt] + number[cnt + 1];
+					cnt++;
+				}
+				if (operator[cnt] == '-')
+				{
+					number[cnt + 1] = number[cnt] - number[cnt + 1];
+					cnt++;
+				}
+			}
+		}
+	}
+
+	return number[NumCnt - 1];
+}
+```
+
+> <b> 소스 설명 </b>
+> > ...
+
+<br/>
