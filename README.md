@@ -51,7 +51,30 @@ ___
 #### 입력 방식
 
 > <b> 소스 </b>
-> > ![입력 소스.jpg](E:\LOCS\Project\Zero Project with jeha\img)
+```{.cpp}
+char *InPutFunction()
+{
+	char *Input = malloc(MAXSIZE);
+	int i = 0;
+
+	gotoxy(PositionX, PositionY);
+	while (Input[i] = _getche())
+	{
+		i++;
+		if (Input[i - 1] == '\n')
+		{
+			Input[i - 1] = '\0';
+			break;
+		}
+		if (Input[i - 1] == '\b')
+		{
+			i = i - 2;
+		}
+	}
+
+	return Input;
+}
+```
 ___
 #### 알고리즘
 
