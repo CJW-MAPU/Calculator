@@ -51,7 +51,7 @@ ___
 #### 입력 방식
 
 > <b> 소스 </b>
-```{.cpp}
+```{.c}
 char *InPutFunction()
 {
 	char *Input = malloc(MAXSIZE);
@@ -75,6 +75,9 @@ char *InPutFunction()
 	return Input;
 }
 ```
+
+<br>
+
 ___
 #### 알고리즘
 
